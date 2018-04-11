@@ -69,8 +69,6 @@ class User < ActiveRecord::Base
 		  temp_images[0].write(url = "/tmp/#{profile.name}#{extension}")
 		  photo.data = File.open(url)
 		  photo.save
-
-		  user.user_tries.create
 		end
 	
 		user
