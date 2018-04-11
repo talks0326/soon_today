@@ -80,6 +80,8 @@ class User < ActiveRecord::Base
 			mattch = Mattching.new
 			mattch.man_id = self.profile.gender? ? target_id : self.id
 			mattch.woman_id = self.profile.gender? ? self.id : target_id
+			exist_mattch = Mattching.where(man_id: mattch.man_id,woman_id: mattch.woman_id)
+			return exist_mattch unless exist_mattch.blank?
 			if mattch.save
 				room = Room.new
 				room.man_id = self.profile.gender? ? target_id : self.id
