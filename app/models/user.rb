@@ -88,7 +88,7 @@ class User < ActiveRecord::Base
 				room.woman_id = self.profile.gender? ? self.id : target_id
 				room.save
 			else
-				mattch = exist_mattch
+				mattch = exist_mattch.first
 			end
 		end
 		return mattch
