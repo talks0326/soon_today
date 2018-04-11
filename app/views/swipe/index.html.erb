@@ -18,7 +18,7 @@
 			</div>
 			<div class="action_box">
 				<%= form_tag(swipe_judge_path,method: :post,remote: true,class: "flexbox") do %>
-					<%= hidden_field_tag "target_id",@users.last.id %>
+					<%= hidden_field_tag "target_id",@users.last.id unless @users.blank? %>
 					<div class="judge unlike">
 						<%= submit_tag "UnLike",name: "judge",class: "judge-button",value: "UnLike" %>
 					</div>
