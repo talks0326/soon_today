@@ -1,6 +1,6 @@
 class SwipeController < ApplicationController
   def index
-  	@users = current_user.profile.gender? ? Profile.where(gender: false).map{|p| p.user } : Profile.where(gender: true).map{|p| p.user }
+  	@users = current_user.profile.gender? ? Profile.where(gender: false).map{|p| p.user }.compact! : Profile.where(gender: true).map{|p| p.user }.compact!
   end
 
   def judge
