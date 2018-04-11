@@ -59,7 +59,7 @@ class User < ActiveRecord::Base
 		  profile.gender = auth.info.gender.eql?("male") ? 0 : 1
 		  profile.save
 
-		  photo = profile.build_photo
+		  photo = profile.photos.build
 		
 		  photo.photo_type = 1
 		  url = auth.info.image
