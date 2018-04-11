@@ -1,0 +1,130 @@
+// Place all the styles related to the swipe controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.user_container{
+	width: 350px;
+	margin: 0 auto;
+	position: relative;
+	padding-top: 60px;
+
+	.users{
+		position: relative;
+		width: 350px;
+		height: 560px;
+
+		.user_box{
+			position: absolute;
+			top: 0;
+
+			.user{
+				width: 100%;
+
+				img{
+					width: 100%;
+					border-radius: 20px;
+					background-color:#ffb901;
+				}
+			}
+
+			.profiles{
+				position: absolute;
+				bottom: 10px;
+				left: 10px;
+				color: #fff;
+
+				p{
+					margin: 0;
+
+					&.name{
+						font-size: 1.2em;
+						font-weight: bold;
+					}
+				}
+			}
+		}
+	}
+
+	.action_box{
+		margin-top: 20px;
+		form{
+			.judge{
+				width: 50%;
+				text-align: center;
+
+				input[type="submit"]{
+					border-radius: 50%;
+				    width: 100px;
+				    height: 100px;
+				    color: #fff;
+				    font-size: 25px;
+				    border: none;
+				}
+
+				&.unlike{
+					input{
+			    		background-color: #ff6565;
+			    	}
+			    }
+
+			    &.like{
+			    	input{
+			    		background-color: #41e446;
+			    	}
+			    }
+			}
+		}
+	}
+}
+
+.pageBody{
+	&.ajax_container{
+		position: absolute;
+	    top: 60px;
+	    height: auto;
+	    left: 0;
+	    right: 0;
+	    background-color: #0b0b0b80;
+
+	    .flexbox{
+	    	justify-content: center;
+	    	padding-top: 30px;
+
+	    	.user_box{
+	    		position: relative;
+
+				.user{
+					width: 80%;
+					margin: 0 auto;
+
+					img{
+						width: 100%;
+						border-radius: 20px;
+						background-color: #0b0b0b80;
+					}
+				}
+
+				.profiles{
+					position: absolute;
+					bottom: 10px;
+					left: 15%;
+					color: #fff;
+
+					p{
+						margin: 0;
+
+						&.name{
+							font-size: 1.2em;
+							font-weight: bold;
+						}
+					}
+				}
+			}	
+	    }   
+	    .message{
+	    	text-align: center;
+	    	font-weight: bold;
+	    	font-size: 1.5em;
+	    	color: #fff;
+	    } 
+	}
+}

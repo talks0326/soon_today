@@ -63,7 +63,6 @@ ActiveRecord::Schema.define(version: 0) do
     t.string "name", null: false
     t.string "birth_place"
     t.date "birthday"
-    t.string "default_talk_theme"
     t.text "self_introduction"
     t.string "work"
     t.string "place"

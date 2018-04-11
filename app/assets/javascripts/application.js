@@ -12,4 +12,15 @@
 //
 //= require rails-ujs
 //= require turbolinks
+//= require jquery
 //= require_tree .
+
+$(document).on("click",".judge-button",function(){
+	var current_id = $(".user_box").last().attr("id");
+	$(".user_box").last().remove();
+	$(this).closest("form").find("input#target_id").val(current_id);
+});
+
+$(document).on("click","#ajax_container",function(){
+	$(this).empty();
+});

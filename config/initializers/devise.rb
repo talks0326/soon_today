@@ -251,7 +251,7 @@ Devise.setup do |config|
   # config.navigational_formats = ['*/*', :html]
 
   # The default HTTP method used to sign out a resource. Default is :delete.
-  config.sign_out_via = :delete
+  config.sign_out_via = [:get,:delete]
 
   # ==> OmniAuth
   # Add a new OmniAuth provider. Check the wiki for more information on setting
@@ -280,4 +280,8 @@ Devise.setup do |config|
   # When using OmniAuth, Devise cannot automatically set OmniAuth path,
   # so you need to do it manually. For the users scope, it would be:
   # config.omniauth_path_prefix = '/my_engine/users/auth'
+  config.omniauth :facebook, 
+    "550364342013931", "7bf9f70b2821b4c99d0e779534e56261",
+    scope: "email,public_profile",info_fields: "email,name,gender,age_range",image_size: "large"
+  #config.omniauth :facebook,"150824142401485","79b58a6320efb88e970a12ae7ed702e6"
 end

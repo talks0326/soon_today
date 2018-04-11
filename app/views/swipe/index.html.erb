@@ -1,0 +1,35 @@
+<div class="wrapper main">
+	<div class="pageBody">
+		<div class="user_container">
+			<div class="users">
+				<% @users.each do |u| %>
+				<div id="<%= u.id %>" class="user_box">
+					<div class="user">
+						<%= image_tag u.profile.photos.first.data.url(:sp_medium,false) %>
+						<div class="profiles">
+							<div>
+								<p class="name"><%= u.profile.name %>, <%= get_age(u.profile.birthday)%></p>
+								<p><%= u.profile.work %></p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<% end %>
+			</div>
+			<div class="action_box">
+				<%= form_tag(swipe_judge_path,method: :post,remote: true,class: "flexbox") do %>
+					<%= hidden_field_tag "target_id",@users.last.id %>
+					<div class="judge unlike">
+						<%= submit_tag "UnLike",name: "judge",class: "judge-button",value: "UnLike" %>
+					</div>
+					<div class="judge like">
+						<%= submit_tag "Like",name: "judge",class: "judge-button",value: "Like" %>
+					</div>
+				<% end %>
+			</div>
+		</div>
+	</div>
+	<div id="ajax_container" class="pageBody ajax_container">
+	</div>
+</div>
+

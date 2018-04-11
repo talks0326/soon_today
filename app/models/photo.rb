@@ -16,4 +16,8 @@
 #
 
 class Photo < ActiveRecord::Base
+	belongs_to :photable,polymorphic: true, optional: true
+
+	has_attached_file :data, styles: { sp_large: "500x800#",sp_medium: "350x560#",sp_thumb: "100x160#",large:"400x400#",medium:"200x200#" , thumb: "100x100#" }, default_url: "missing.png"
+	validates_attachment_content_type :data, content_type: /\Aimage\/.*\z/
 end

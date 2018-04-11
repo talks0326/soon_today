@@ -1,0 +1,25 @@
+<div class="flexbox">
+	<div id="<%= current_user.id %>" class="user_box">
+		<div class="user">
+			<%= image_tag @mattch.man.profile.photos.first.data.url(:sp_medium,false) %>
+			<div class="profiles">
+				<div>
+					<p class="name"><%= @mattch.man.profile.name %>, <%= get_age(@mattch.man.profile.birthday)%></p>
+					<p><%= @mattch.man.profile.work %></p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="<%= @mattch.woman.id %>" class="user_box">
+		<div class="user">
+			<%= image_tag @mattch.woman.profile.photos.first.data.url(:sp_medium,false) %>
+			<div class="profiles">
+				<div>
+					<p class="name"><%= @mattch.woman.profile.name %>, <%= get_age(@mattch.woman.profile.birthday)%></p>
+					<p><%= @mattch.woman.profile.work %></p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<P class="message">マッチングしました！</P>

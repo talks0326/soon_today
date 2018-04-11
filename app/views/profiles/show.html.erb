@@ -1,0 +1,4 @@
+<%= @profile.name %>
+<% @profile.photos.each do |p| %>
+	<%= image_tag p.data.url(:thumb,false),style: "width:100px;" %>
+<% end %>

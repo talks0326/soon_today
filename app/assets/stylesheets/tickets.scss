@@ -1,0 +1,152 @@
+// Place all the styles related to the tickets controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+@import 'variable';
+// Place all the styles related to the Top controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.wrapper.main{
+
+	.pageBody.ticket{
+		padding-top: 60px;
+
+		a.today-ticket{
+			text-decoration: none;
+		    padding: 10px 20px;
+		    display: block;
+		    background-color: #fff;
+		    border-radius: 15px;
+		}
+
+		label.label-btn{
+			display: block;
+		    width: 50%;
+		    margin: 10px auto;
+		    background-color: #ffb901;
+		    border-radius: 8px;
+		    color: #fff;
+		    font-weight: bold;
+		    box-shadow: 2px 2px gray;
+		    padding: 10px 0;
+		    text-align: center;
+
+		    @media screen and (max-width: $screen-sm) {
+		        width:80%;
+		    }
+
+		    &.checked{
+		    	box-shadow: 2px 2px gray inset;
+		    	background-color: #e0a200;
+		    }
+
+		    &:hover{
+		    	box-shadow: 2px 2px gray inset;
+		    	background-color: #e0a200;
+		    }
+		}
+	}	
+}
+
+.soon{
+
+	background: #ffb901;
+	height: 60px;
+	width: auto;
+	position: absolute;
+	bottom: 20px;
+	left: 0;
+	right: 0;
+	&.at{
+		&.long{
+			position: relative;
+			bottom: 0;
+
+			.sujest{
+				margin: 0;
+			}
+		}
+		.sujest{
+			display:block;
+		}
+	}
+
+	&.long{
+		bottom:-60px;
+	}
+
+	@media screen and (max-width: $screen-sm) {
+    	height: 60px;
+	    width: auto;
+	    position: absolute;
+	    bottom:0;
+	    display: flex;    
+
+	    &.long{
+	    	bottom: -60px;
+	    }
+
+	    &.noComment{
+	    	width: 100%;
+	    }
+    }
+	
+
+    img{
+    	height: 60px;
+    	@media screen and (max-width: $screen-sm) {
+    		width: 30vw;
+	    	margin: -15px 10px 0 15px;
+	    	height: auto;
+    	}	
+    }
+
+    span{
+    	background-color: #fff;
+	    border-radius: 15px;
+	    padding: 5px 10px;
+	    line-height: 50px;
+	    color: #ffb901;
+
+    	@media screen and (max-width: $screen-sm) {
+	    	background-color: #fff;
+		    border-radius: 15px;
+		    padding: 5px 10px;
+		    margin: 5px 10px 5px 0;
+		    line-height: 1.3em;
+		    color: #ffb901;
+		}
+    }
+
+    .sujest{
+    	display:none;
+    	position: absolute;
+	    background: #ffb901;
+	    width: 100%;
+
+		@media screen and (max-width: $screen-sm) {
+			position: absolute;
+		    margin-top: 60px;
+		    background: #ffb901;
+		    width: 100%;
+		}
+
+		p{
+			padding: 10px 10px;
+		    background: #fff;
+		    margin: 10px auto;
+		    border-radius: 10px;
+		    color: #ffb901;
+		    width: 600px;
+
+			@media screen and (max-width: $screen-sm) {
+			    padding: 10px 10px;
+			    background: #fff;
+			    margin: 10px auto;
+			    border-radius: 10px;
+			    color: #ffb901;
+			    width: 90vw;
+			}
+		}
+	}
+}

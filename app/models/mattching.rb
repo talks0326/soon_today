@@ -10,4 +10,6 @@
 #
 
 class Mattching < ActiveRecord::Base
+	belongs_to :man,class_name: "User",foreign_key: "man_id"
+	belongs_to :woman,class_name: "User",foreign_key: "woman_id"
 end

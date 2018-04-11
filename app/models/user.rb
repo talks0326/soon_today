@@ -29,4 +29,66 @@
 #
 
 class User < ActiveRecord::Base
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable and :omniauthable
+  	devise :database_authenticatable, :registerable,
+			:recoverable, :rememberable, :trackable, :validatable,:omniauthable, :omniauth_providers => [:facebook]
+
+	has_one :profile
+	has_many :rooms
+	has_many :likes
+	has_many :unlikes
+	has_many :tickets
+	has_many :man_mattchings,class_name: "Mattching",foreign_key: "man_id"
+	has_many :woman_mattchings,class_name: "Mattching",foreign_key: "woman_id"
+	has_many :man_rooms,class_name: "Room",foreign_key: "man_id"
+	has_many :woman_rooms,class_name: "Room",foreign_key: "woman_id"
+
+  	def self.find_for_oauth(auth)
+		user = User.where(uid: auth.uid, provider: auth.provider).first
+
+		unless user
+		  user = User.create(
+		    uid:      auth.uid,
+		    provider: auth.provider,
+		    email:    auth.info.email,
+		    password: Devise.friendly_token[0, 20]
+		  )
+		  profile = user.build_profile 
+		  profile.name = auth.info.name
+		  profile.gender = auth.info.gender.eql?("male") ? 0 : 1
+		  profile.save
+
+		  photo = profile.build_photo
+		
+		  photo.photo_type = 1
+		  url = auth.info.image
+		  image_url = open(url)
+		  extension = image_url.content_type.split("/")[1]
+		  temp_images = Magick::Image.from_blob(image_url.read)
+		  temp_images[0].write(url = "/tmp/#{profile.name}#{extension}")
+		  photo.data = File.open(url)
+		  photo.save
+
+		  user.user_tries.create
+		end
+	
+		user
+	end
+
+	def mattching_check(target_id)
+		likes = Like.where(user_id: target_id,target_id: self.id)
+		unless likes.blank?
+			mattch = Mattching.new
+			mattch.man_id = self.profile.gender? ? target_id : self.id
+			mattch.woman_id = self.profile.gender? ? self.id : target_id
+			if mattch.save
+				room = Room.new
+				room.man_id = self.profile.gender? ? target_id : self.id
+				room.woman_id = self.profile.gender? ? self.id : target_id
+				room.save
+			end
+		end
+		return mattch
+	end    
 end
