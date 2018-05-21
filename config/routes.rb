@@ -34,15 +34,15 @@
 
 Rails.application.routes.draw do
 
-  namespace :rooms do
-    get "/",action: "index"
-    get ":id",action: "show"
-  end
+  #namespace :rooms do
+  #  get "/",action: "index"
+  #  get ":id",action: "show"
+  #end
 
-  namespace :tickets do
-    get "new"
-    get "create"
-  end
+  #namespace :tickets do
+  #  get "new"
+  #  get "create"
+  #end
   
   namespace :swipe do
   	get "/",action: "index"
@@ -54,6 +54,21 @@ Rails.application.routes.draw do
 
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' } 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  resources :profiles,only: [:show,:edit,:update]
+  #resources :profiles,only: [:show,:edit,:update]
   #root to: "home#index"
+
+  post "users/fb_login/result.json",controller: "users",action: "fb_login"
+  get "tickets/new" => "tickets#new"
+  post "tickets" => "tickets#create"
+  get "tickets/today" => "tickets#today"
+  get "tickets/:id" => "tickets#show"
+  post "tickets/:id/like" => "tickets#like"
+  get "users/likes" => "users#likes"
+  get "profiles/edit" => "profiles#self_edit"
+  post "profiles/update" => "profiles#self_update"
+  get "profiles/:user_id" => "profiles#user_show"
+  get "mattchings/all" => "mattchings#all"
+  get "rooms/:user_id" => "rooms#show"
+  post "rooms/:user_id/post" => "rooms#messages"
+
 end

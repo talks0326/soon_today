@@ -8,5 +8,13 @@ class RoomsController < ApplicationController
   end
 
   def show
+  	@id = params[:user_id].to_i
+  	@datetime = DateTime.now
+  end
+
+  def messages
+  	@id = params[:user_id].to_i
+  	@datetime = DateTime.now
+  	@message = params[:message][:content]
   end
 end
