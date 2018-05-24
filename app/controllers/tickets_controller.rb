@@ -1,5 +1,5 @@
 class TicketsController < ApplicationController
-  skip_before_filter  :verify_authenticity_token
+  protect_from_forgery :except => [:today,:show,:like]
   def new
   end
 

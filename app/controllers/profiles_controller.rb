@@ -1,5 +1,5 @@
 class ProfilesController < ApplicationController
-  skip_before_filter  :verify_authenticity_token
+  protect_from_forgery :except => [:user_show,:self_update,:self_edit]
   before_action :set_profile, only: [:show, :edit, :update, :destroy]
 
   # GET /profiles

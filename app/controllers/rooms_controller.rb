@@ -1,5 +1,5 @@
 class RoomsController < ApplicationController
-  skip_before_filter  :verify_authenticity_token
+  protect_from_forgery :except => [:show,:messages]
   def index
   	matthings = current_user.profile.gender? ? current_user.woman_mattchings : current_user.man_mattchings
   	@users = current_user.profile.gender? ? matthings.map{|m| m.man } : matthings.map{|m| m.woman }
