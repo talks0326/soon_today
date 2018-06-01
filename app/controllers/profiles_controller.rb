@@ -70,11 +70,11 @@ class ProfilesController < ApplicationController
   end
 
   def self_update
-    
+    @profile_status = params[:user].present? ? params[:user][:profile_status].present? ? params[:user][:profile_status].to_i + 1 : 1 : 1
   end
 
   def self_edit
-    
+    @profile_status = params[:user].present? ? params[:user][:profile_status].present? ? params[:user][:profile_status].to_i + 1 : 1 : 1
   end
 
   private
