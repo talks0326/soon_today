@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 	def fb_login
 		if params[:users].present?
 			if params[:uid].present? && params[:email].present?
-				user = User.where(uid: params[:uid],email: params[:email])
+				users = User.where(uid: params[:uid],email: params[:email])
 			elsif params[:email].present?
 				users = User.where(email: email)
 			end
