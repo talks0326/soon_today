@@ -15,6 +15,7 @@ class UsersController < ApplicationController
 					user.profile.get_photo(params[:users][:image_url])
 					@user = user
 				else
+					logger.debug(user.errors.messages)
 					head 400
 				end
 			else
