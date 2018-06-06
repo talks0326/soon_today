@@ -23,12 +23,12 @@
 
 class Profile < ActiveRecord::Base
 	belongs_to :user
-	belongs_to :education
-	belongs_to :birth_place
-	belongs_to :work
-	belongs_to :place
-	belongs_to :time_style
-	belongs_to :food_style
+	belongs_to :education,optional: true
+	belongs_to :birth_place,optional: true
+	belongs_to :work,optional: true
+	belongs_to :place,optional: true
+	belongs_to :time_style,optional: true
+	belongs_to :food_style,optional: true
 	has_many :photos,as: :photable
 
 	accepts_nested_attributes_for :photos,allow_destroy: true

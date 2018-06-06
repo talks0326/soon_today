@@ -30,7 +30,7 @@
 array = ["test","test2","test3","test4","test5","test6","test7","test8"]
 array.each do |a|
 	BirthPlace.create(name: a)
-	Works.create(name: a)
+	Work.create(name: a)
 	TimeStyle.create(name: a)
 	FoodStyle.create(name: a)
 	Education.create(name: a)

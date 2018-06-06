@@ -72,10 +72,13 @@ class ProfilesController < ApplicationController
   def self_update
     @user = User.where(access_token: params[:access_token])
     if @user.blank?
-      head 403
+      head 400
     else
-      if @user.profile.update(profile_params)
+      @user = @user.first
+      if @user.update(user_params)
         @user.profile.update(status: @user.profile.status + 1)
+      else
+        logger.debug(@user.profile.errors.messages)
       end
       redirect_to profiles_edit_path(access_token: @user.access_token)
     end
@@ -84,7 +87,9 @@ class ProfilesController < ApplicationController
   def self_edit
     @user = User.where(access_token: params[:access_token])
     if @user.blank?
-      head 403
+      head 400
+    else
+      @user = @user.first
     end
   end
 
@@ -104,6 +109,21 @@ class ProfilesController < ApplicationController
         :user_id,:name,:gender,:birthday,:intro,:height,:education_id,:work_id,:birth_place_id,
         :active_location,:time_style_id,:food_style_id,
         photos_attributes: [:id,:photo_type,:url,:data,:_destroy]
+      ]
+    end
+
+    def user_params
+      params.fetch(:user, {}).permit(user_attributes)
+    end
+
+    def user_attributes
+      [
+        :id,
+        profile_attributes: [
+          :id,:name,:gender,:birthday,:intro,:height,:education_id,:work_id,:birth_place_id,
+          :active_location,:time_style_id,:food_style_id,
+          photos_attributes: [:id,:photo_type,:url,:data,:_destroy]
+        ]
       ]
     end
 end

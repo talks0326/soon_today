@@ -2,55 +2,55 @@ json.set! 'user' do
 	json.id @user.id
 	json.profile_status @user.profile.status
 	json.set! 'profile' do
+		json.id @user.profile.id
 		json.name @user.profile.name
 		json.age get_age(@user.profile.birthday)
 		json.intro @user.profile.intro
-		json.height 160
+		json.height @user.profile.height
 		json.set! 'education' do
-			json.id	1
+			json.id	@user.profile.education_id
 		end
-		json.set! 'birth_place' do
-			json.id	1
-		end
-		json.active_location "新宿"
+		json.active_location @user.profile.active_location
 		json.set! 'time_style' do
-			json.id	1
+			json.id	@user.profile.time_style_id
 		end
 		json.set! 'food_style' do
-			json.id	1
+			json.id	@user.profile.food_style_id
 		end
 		json.set! 'photos' do
-			json.array!(1..4) do |n|
-				if n % 2 == 0
-					json.url "https://i1.wp.com/clearskin.life/wp-content/uploads/2018/02/599063a2d67ba196c0557bbc90515340.jpg?resize=615%2C380&ssl=1"
-				else
-					json.url "http://biznot.xsrv.jp/wp/wp-content/uploads/2014/02/hirosue.jpg"
-				end
+			json.array!(@user.profile.photos) do |n|
+				json.url "#{root_url.to_s.chop}#{n.data.url(:thumb,false)}"
 			end
 		end
 	end
 end
 json.set! 'educations' do
-	json.array!(1..6) do |n|
-		json.id n
-		json.name "学歴#{n}"
+	json.array!(Education.all) do |n|
+		json.id n.id
+		json.name n.name
+	end
+end
+json.set! 'works' do
+	json.array!(Work.all) do |n|
+		json.id n.id
+		json.name n.name
 	end
 end
 json.set! 'birth_places' do
-	json.array!(1..47) do |n|
-		json.id n
-		json.name "都道府県#{n}"
+	json.array!(BirthPlace.all) do |n|
+		json.id n.id
+		json.name n.name
 	end
 end
 json.set! 'time_styles' do
-	json.array!(1..8) do |n|
-		json.id n
-		json.name "タイムスタイル#{n}"
+	json.array!(TimeStyle.all) do |n|
+		json.id n.id
+		json.name n.name
 	end
 end
 json.set! 'food_styles' do
-	json.array!(1..8) do |n|
-		json.id n
-		json.name "フードスタイル#{n}"
+	json.array!(FoodStyle.all) do |n|
+		json.id n.id
+		json.name n.name
 	end
 end
