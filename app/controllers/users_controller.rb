@@ -14,6 +14,8 @@ class UsersController < ApplicationController
 				if user.save
 					user.profile.get_photo(params[:users][:image_url])
 					@user = user
+				else
+					logger.debug(user.errors.messages)
 				end
 			else
 				@user = users.first
