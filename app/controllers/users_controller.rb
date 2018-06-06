@@ -2,13 +2,13 @@ class UsersController < ApplicationController
 	protect_from_forgery :except => [:fb_login]
 	def fb_login
 		if params[:users].present?
-			if params[:uid].present? && params[:email].present?
+			if params[:users][:uid].present? && params[:users][:email].present?
 				logger.debug("uid & email present")
-				users = User.where(uid: params[:uid],email: params[:email])
+				users = User.where(uid: params[:users][:uid],email: params[:users][:email])
 				logger.debug(users.inspect)
-			elsif params[:email].present?
+			elsif params[:users][:email].present?
 				logger.debug("only email present")
-				users = User.where(email: email)
+				users = User.where(email: params[:users][:email])
 				logger.debug(users.inspect)
 			end
 			if users.blank?
