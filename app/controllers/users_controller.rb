@@ -3,9 +3,13 @@ class UsersController < ApplicationController
 	def fb_login
 		if params[:users].present?
 			if params[:uid].present? && params[:email].present?
+				logger.debug("uid & email present")
 				users = User.where(uid: params[:uid],email: params[:email])
+				logger.debug(users.inspect)
 			elsif params[:email].present?
+				logger.debug("only email present")
 				users = User.where(email: email)
+				logger.debug(users.inspect)
 			end
 			if users.blank?
 				user = User.new(user_params)
