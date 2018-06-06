@@ -24,6 +24,7 @@ class UsersController < ApplicationController
 				end
 			else
 				@user = users.first
+				logger.debug(@user.inspect)
 			end
 		else
 			logger.debug("no users parametaer")
