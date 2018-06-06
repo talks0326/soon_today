@@ -2,8 +2,8 @@ class UsersController < ApplicationController
 	protect_from_forgery :except => [:fb_login]
 	def fb_login
 		if params[:users].present?
-			if params[:uid].present?
-				user = User.where(uid: params[:uid])
+			if params[:uid].present? && params[:email].present?
+				user = User.where(uid: params[:uid],email: params[:email])
 			elsif params[:email].present?
 				users = User.where(email: email)
 			end
@@ -15,7 +15,7 @@ class UsersController < ApplicationController
 					user.profile.get_photo(params[:users][:image_url])
 					@user = user
 				else
-					logger.debug(user.errors.messages)
+					head 400
 				end
 			else
 				@user = users.first
