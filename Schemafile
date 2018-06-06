@@ -1,5 +1,23 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
+create_table "birth_places", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  t.string "name", null: false
+  t.datetime "created_at", null: false
+  t.datetime "updated_at", null: false
+end
+
+create_table "educations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  t.string "name", null: false
+  t.datetime "created_at", null: false
+  t.datetime "updated_at", null: false
+end
+
+create_table "food_styles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  t.string "name", null: false
+  t.datetime "created_at", null: false
+  t.datetime "updated_at", null: false
+end
+
 create_table "likes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
   t.integer "user_id", null: false
   t.integer "target_id", null: false
@@ -47,13 +65,19 @@ end
 
 create_table "profiles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
   t.integer "user_id", null: false
-  t.boolean "gender", null: false
-  t.string "name", null: false
-  t.string "birth_place"
+  t.boolean "gender"
+  t.string "name"
   t.date "birthday"
-  t.text "self_introduction"
-  t.string "work"
-  t.string "place"
+  t.text "intro"
+  t.integer "height"
+  t.integer "education_id"
+  t.integer "birth_place_id"
+  t.integer "work_id"
+  t.integer "place_id"
+  t.string "active_location"
+  t.integer "time_style_id"
+  t.integer "food_style_id"
+  t.integer "status", default: 0
   t.datetime "created_at", null: false
   t.datetime "updated_at", null: false
 end
@@ -68,6 +92,12 @@ end
 create_table "tickets", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
   t.integer "user_id", null: false
   t.boolean "end"
+  t.datetime "created_at", null: false
+  t.datetime "updated_at", null: false
+end
+
+create_table "time_styles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  t.string "name", null: false
   t.datetime "created_at", null: false
   t.datetime "updated_at", null: false
 end
@@ -98,7 +128,8 @@ create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=u
   t.string "unlock_token"
   t.string "provider"
   t.string "uid"
-  t.string "token"
+  t.string "fb_token"
+  t.string "access_token"
   t.boolean "admin_flag", default: false
   t.datetime "locked_at"
   t.datetime "created_at", null: false
@@ -107,4 +138,10 @@ create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=u
   t.index ["email"], name: "index_users_on_email", unique: true
   t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
+end
+
+create_table "works", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  t.string "name", null: false
+  t.datetime "created_at", null: false
+  t.datetime "updated_at", null: false
 end

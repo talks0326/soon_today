@@ -21,7 +21,8 @@
 #  unlock_token           :string(255)
 #  provider               :string(255)
 #  uid                    :string(255)
-#  token                  :string(255)
+#  fb_token               :string(255)
+#  access_token           :string(255)
 #  admin_flag             :boolean          default(FALSE)
 #  locked_at              :datetime
 #  created_at             :datetime         not null
@@ -34,7 +35,7 @@ class User < ActiveRecord::Base
   	devise :database_authenticatable, :registerable,
 			:recoverable, :rememberable, :trackable, :validatable,:omniauthable, :omniauth_providers => [:facebook]
 
-	has_one :profile
+	has_one :profile, :dependent => :destroy
 	has_many :rooms
 	has_many :likes
 	has_many :unlikes
@@ -43,6 +44,8 @@ class User < ActiveRecord::Base
 	has_many :woman_mattchings,class_name: "Mattching",foreign_key: "woman_id"
 	has_many :man_rooms,class_name: "Room",foreign_key: "man_id"
 	has_many :woman_rooms,class_name: "Room",foreign_key: "woman_id"
+
+	accepts_nested_attributes_for :profile,allow_destroy: true
 
   	def self.find_for_oauth(auth)
 		user = User.where(uid: auth.uid, provider: auth.provider).first

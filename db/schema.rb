@@ -12,6 +12,24 @@
 
 ActiveRecord::Schema.define(version: 0) do
 
+  create_table "birth_place", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "education", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "food_style", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "likes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "user_id", null: false
     t.integer "target_id", null: false
@@ -59,13 +77,19 @@ ActiveRecord::Schema.define(version: 0) do
 
   create_table "profiles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "user_id", null: false
-    t.boolean "gender", null: false
-    t.string "name", null: false
-    t.string "birth_place"
+    t.boolean "gender"
+    t.string "name"
     t.date "birthday"
-    t.text "self_introduction"
-    t.string "work"
-    t.string "place"
+    t.text "intro"
+    t.integer "height"
+    t.string "education_id"
+    t.string "birth_place_id"
+    t.string "work_id"
+    t.string "place_id"
+    t.string "active_location"
+    t.string "time_style_id"
+    t.string "food_style_id"
+    t.integer "status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -80,6 +104,19 @@ ActiveRecord::Schema.define(version: 0) do
   create_table "tickets", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "user_id", null: false
     t.boolean "end"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "time_style", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "unlikes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "user_id", null: false
+    t.integer "target_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -103,7 +140,8 @@ ActiveRecord::Schema.define(version: 0) do
     t.string "unlock_token"
     t.string "provider"
     t.string "uid"
-    t.string "token"
+    t.string "fb_token"
+    t.string "access_token"
     t.boolean "admin_flag", default: false
     t.datetime "locked_at"
     t.datetime "created_at", null: false
@@ -112,6 +150,12 @@ ActiveRecord::Schema.define(version: 0) do
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
+  end
+
+  create_table "work", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end

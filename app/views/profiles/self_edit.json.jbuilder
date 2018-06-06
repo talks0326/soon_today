@@ -1,10 +1,10 @@
 json.set! 'user' do
-	json.id 1
-	json.profile_status @profile_status
+	json.id @user.id
+	json.profile_status @user.profile.status
 	json.set! 'profile' do
-		json.name "広末涼子"
-		json.age 23
-		json.intro "自己紹介自己紹介自己紹介。/n自己紹介自己紹介自己紹介。/n自己紹介自己紹介自己紹介。"
+		json.name @user.profile.name
+		json.age get_age(@user.profile.birthday)
+		json.intro @user.profile.intro
 		json.height 160
 		json.set! 'education' do
 			json.id	1

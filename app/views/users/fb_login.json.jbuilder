@@ -1,8 +1,8 @@
 json.set! 'users' do
-	json.access_token "123456789abcdefg"
+	json.access_token @user.access_token
 	json.set! 'users' do
 		json.set! 'photo' do
-			json.url "https://soontoday.com/system/photos/data/000/000/018/original/kagami.png"
+			json.url "#{root_url.to_s.chop}#{@user.profile.photos.first.data.url(:thumb,false)}"
 		end
 	end
 end

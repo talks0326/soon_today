@@ -70,11 +70,22 @@ class ProfilesController < ApplicationController
   end
 
   def self_update
-    @profile_status = params[:user].present? ? params[:user][:profile_status].present? ? params[:user][:profile_status].to_i + 1 : 1 : 1
+    @user = User.where(access_token: params[:access_token])
+    if @user.blank?
+      head 403
+    else
+      if @user.profile.update(profile_params)
+        @user.profile.update(status: @user.profile.status + 1)
+      end
+      redirect_to profiles_edit_path(access_token: @user.access_token)
+    end
   end
 
   def self_edit
-    @profile_status = params[:user].present? ? params[:user][:profile_status].present? ? params[:user][:profile_status].to_i + 1 : 1 : 1
+    @user = User.where(access_token: params[:access_token])
+    if @user.blank?
+      head 403
+    end
   end
 
   private
@@ -90,7 +101,8 @@ class ProfilesController < ApplicationController
 
     def profile_attributes
       [
-        :user_id,:name,:gender,:birth_place,:birthday,:default_talk_theme,:self_introduction,:work,:place,
+        :user_id,:name,:gender,:birthday,:intro,:height,:education_id,:work_id,:birth_place_id,
+        :active_location,:time_style_id,:food_style_id,
         photos_attributes: [:id,:photo_type,:url,:data,:_destroy]
       ]
     end
