@@ -128,7 +128,7 @@ create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=u
   t.string "unlock_token"
   t.string "provider"
   t.string "uid"
-  t.string "fb_token"
+  t.text "fb_token"
   t.string "access_token"
   t.boolean "admin_flag", default: false
   t.datetime "locked_at"
