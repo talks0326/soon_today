@@ -19,6 +19,9 @@ json.set! 'user' do
 		json.set! 'food_style' do
 			json.id	@user.profile.food_style_id
 		end
+		json.set! 'work' do
+			json.id	@user.profile.work_id
+		end
 		json.set! 'photos' do
 			json.array!(@user.profile.photos) do |n|
 				json.url "#{root_url.to_s.chop}#{n.data.url(:thumb,false)}"

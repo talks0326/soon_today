@@ -16,6 +16,7 @@ class UsersController < ApplicationController
 				user.password = Devise.friendly_token[0, 20]
 				user.access_token = SecureRandom.hex(12)
 				if user.save
+					user.profile.create if user.profile.blank?
 					user.profile.get_photo(params[:users][:image_url])
 					@user = user
 				else

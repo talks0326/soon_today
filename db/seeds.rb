@@ -34,4 +34,5 @@ array.each do |a|
 	TimeStyle.create(name: a)
 	FoodStyle.create(name: a)
 	Education.create(name: a)
+	ActiveLocation.create(name: a)
 end
