@@ -121,7 +121,7 @@ class ProfilesController < ApplicationController
         :id,
         profile_attributes: [
           :id,:name,:gender,:birthday,:intro,:height,:education_id,:work_id,:birth_place_id,
-          :active_location,:time_style_id,:food_style_id,
+          :active_location_id,:time_style_id,:food_style_id,
           photos_attributes: [:id,:photo_type,:url,:data,:_destroy]
         ]
       ]

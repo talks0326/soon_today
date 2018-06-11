@@ -10,7 +10,9 @@ json.set! 'user' do
 		json.set! 'education' do
 			json.id	@user.profile.education_id
 		end
-		json.active_location @user.profile.active_location
+		json.set! 'active_location' do
+			json.id	@user.profile.active_location_id
+		end
 		json.set! 'time_style' do
 			json.id	@user.profile.time_style_id
 		end
@@ -50,6 +52,12 @@ json.set! 'time_styles' do
 end
 json.set! 'food_styles' do
 	json.array!(FoodStyle.all) do |n|
+		json.id n.id
+		json.name n.name
+	end
+end
+json.set! 'active_locations' do
+	json.array!(ActiveLocation.all) do |n|
 		json.id n.id
 		json.name n.name
 	end

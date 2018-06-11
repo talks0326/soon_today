@@ -12,6 +12,12 @@ create_table "educations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHAR
   t.datetime "updated_at", null: false
 end
 
+create_table "active_locations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  t.string "name", null: false
+  t.datetime "created_at", null: false
+  t.datetime "updated_at", null: false
+end
+
 create_table "food_styles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
   t.string "name", null: false
   t.datetime "created_at", null: false
@@ -74,7 +80,7 @@ create_table "profiles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSE
   t.integer "birth_place_id"
   t.integer "work_id"
   t.integer "place_id"
-  t.string "active_location"
+  t.string "active_location_id"
   t.integer "time_style_id"
   t.integer "food_style_id"
   t.integer "status", default: 0
