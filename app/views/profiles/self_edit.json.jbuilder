@@ -2,7 +2,7 @@ json.set! 'user' do
 	json.id @user.id
 	json.profile_status @user.profile.status
 	json.set! 'profile' do
-		render "profile"
+		render "profile",profile: @user.profile
 	end
 end
 json.set! 'educations' do
