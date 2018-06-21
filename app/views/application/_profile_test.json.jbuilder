@@ -19,7 +19,7 @@ json.set! 'work' do
 	json.id	1
 end
 json.set! 'photos' do
-	json.array!(profile.photos) do |n|
+	json.array!(1..4) do |n|
 		json.url "https://scontent-nrt1-1.xx.fbcdn.net/v/t1.0-9/282670_10150863966757056_946026273_n.jpg?_nc_cat=0&oh=e9e28377362887bfd77f30a774aefab2&oe=5BE7D766"
 	end
 end
