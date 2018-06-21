@@ -2,7 +2,7 @@ json.set! 'user' do
 	json.id @user.id
 	json.profile_status @user.profile.status
 	json.set! 'profile' do
-		render partial: "profile_partial", locals: {profile: @user.profile}
+		json.partial! 'profile_partial',profile: @user.profile
 	end
 end
 json.set! 'educations' do

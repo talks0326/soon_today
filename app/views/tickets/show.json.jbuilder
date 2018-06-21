@@ -3,7 +3,7 @@ json.set! 'tickets' do
 	json.set! 'user' do
 		json.id @id * @id
 		json.set! 'profile' do
-			render partial: "profile_test"
+			json.partial! 'profile_test'
 		end
 	end
 	json.set! 'tags' do

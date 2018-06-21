@@ -2,7 +2,7 @@ json.set! 'users' do
 	json.array!(1..10) do |n|
 		json.id n * n
 		json.set! 'profile' do
-			render partial: "profile_test"
+			json.partial! 'profile_test'
 		end
 		json.set! 'tags' do
 			json.array!(1..2) do |n|

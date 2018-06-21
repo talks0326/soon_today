@@ -3,7 +3,7 @@ if @mattch == 0
 		json.set! 'users' do
 			json.id @id * @id
 			json.set! 'profile' do
-				render partial: "profile_test"
+				json.partial! 'profile_test'
 			end
 		end
 		json.set! 'ticket' do

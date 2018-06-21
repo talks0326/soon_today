@@ -4,7 +4,7 @@ json.set! 'tickets' do
 		json.set! 'user' do
 			json.id n * n
 			json.set! 'profile' do
-				render partial: "profile_test"
+				json.partial! 'profile_test'
 			end
 		end
 		json.set! 'tags' do
