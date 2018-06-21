@@ -4,12 +4,7 @@ json.set! 'tickets' do
 		json.set! 'user' do
 			json.id n * n
 			json.set! 'profile' do
-				json.name "広末涼子"
-				json.age 23
-				json.intro "自己紹介自己紹介自己紹介。/n自己紹介自己紹介自己紹介。/n自己紹介自己紹介自己紹介。"
-				json.set! 'photo' do
-					json.url "http://biznot.xsrv.jp/wp/wp-content/uploads/2014/02/hirosue.jpg"
-				end
+				render partial: "profile_test"
 			end
 		end
 		json.set! 'tags' do
