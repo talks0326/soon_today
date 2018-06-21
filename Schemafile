@@ -1,5 +1,11 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
+create_table "active_locations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  t.string "name", null: false
+  t.datetime "created_at", null: false
+  t.datetime "updated_at", null: false
+end
+
 create_table "birth_places", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
   t.string "name", null: false
   t.datetime "created_at", null: false
@@ -7,12 +13,6 @@ create_table "birth_places", force: :cascade, options: "ENGINE=InnoDB DEFAULT CH
 end
 
 create_table "educations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-  t.string "name", null: false
-  t.datetime "created_at", null: false
-  t.datetime "updated_at", null: false
-end
-
-create_table "active_locations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
   t.string "name", null: false
   t.datetime "created_at", null: false
   t.datetime "updated_at", null: false
