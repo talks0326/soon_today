@@ -6,15 +6,6 @@ json.height 160
 json.set! 'education' do
 	json.id	1
 end
-json.set! 'active_location' do
-	json.id	1
-end
-json.set! 'time_style' do
-	json.id	1
-end
-json.set! 'food_style' do
-	json.id	1
-end
 json.set! 'work' do
 	json.id	1
 end

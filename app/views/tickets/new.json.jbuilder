@@ -1,8 +1,20 @@
 json.set! 'today_login' do
-	json.set! 'items' do
-		json.array!(1..3) do |n|
-			json.id n
-			json.name "item#{n}"
+	json.set! 'time_styles' do
+		json.array!(TimeStyle.all) do |n|
+			json.id n.id
+			json.name n.name
+		end
+	end
+	json.set! 'food_styles' do
+		json.array!(FoodStyle.all) do |n|
+			json.id n.id
+			json.name n.name
+		end
+	end
+	json.set! 'active_locations' do
+		json.array!(ActiveLocation.all) do |n|
+			json.id n.id
+			json.name n.name
 		end
 	end
 end
