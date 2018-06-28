@@ -73,6 +73,7 @@ Rails.application.routes.draw do
   post "profiles/update" => "profiles#self_update"
   get "profiles/:user_id" => "profiles#user_show"
   get "mattchings/all" => "mattchings#all"
+  get "mattchings/today" => "mattchings#today"
   get "rooms/:user_id" => "rooms#show"
   post "rooms/:user_id/post" => "rooms#messages"
 

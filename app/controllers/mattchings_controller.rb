@@ -3,4 +3,8 @@ class MattchingsController < ApplicationController
 	def all
 
 	end
+
+	def today
+		
+	end
 end
