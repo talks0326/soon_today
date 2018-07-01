@@ -1,13 +1,13 @@
 json.set! 'tickets' do
 	json.id @id
 	json.set! 'time_style' do
-		json.name "time_style"
+		json.partial! 'time_style_test'
 	end
 	json.set! 'food_style' do
-		json.name "food_style"
+		json.partial! 'food_style_test'
 	end
 	json.set! 'active_location' do
-		json.name "active_location"
+		json.partial! 'active_location_test'
 	end
 	json.set! 'user' do
 		json.id @id * @id

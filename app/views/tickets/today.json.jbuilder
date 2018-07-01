@@ -2,13 +2,13 @@ json.set! 'tickets' do
 	json.array!(1..10) do |n|
 		json.id n
 		json.set! 'time_style' do
-			json.name "20時"
+			json.partial! 'time_style_test'
 		end
 		json.set! 'food_style' do
-			json.name "和食"
+			json.partial! 'food_style_test'
 		end
 		json.set! 'active_location' do
-			json.name "新宿"
+			json.partial! 'active_location_test'
 		end
 		json.set! 'user' do
 			json.id n * n
