@@ -12,6 +12,12 @@
 
 ActiveRecord::Schema.define(version: 0) do
 
+  create_table "active_locations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "birth_places", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
@@ -82,13 +88,13 @@ ActiveRecord::Schema.define(version: 0) do
     t.date "birthday"
     t.text "intro"
     t.integer "height"
-    t.string "education_id"
-    t.string "birth_place_id"
-    t.string "work_id"
-    t.string "place_id"
-    t.string "active_location"
-    t.string "time_style_id"
-    t.string "food_style_id"
+    t.integer "education_id"
+    t.integer "birth_place_id"
+    t.integer "work_id"
+    t.integer "place_id"
+    t.string "active_location_id"
+    t.integer "time_style_id"
+    t.integer "food_style_id"
     t.integer "status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -140,7 +146,7 @@ ActiveRecord::Schema.define(version: 0) do
     t.string "unlock_token"
     t.string "provider"
     t.string "uid"
-    t.string "fb_token"
+    t.text "fb_token"
     t.string "access_token"
     t.boolean "admin_flag", default: false
     t.datetime "locked_at"

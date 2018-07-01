@@ -10,4 +10,5 @@
 
 class FoodStyle < ActiveRecord::Base
 	has_many :profiles
+	has_one :photo,as: :photable
 end
