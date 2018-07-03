@@ -1,6 +1,7 @@
 json.set! 'user' do
 	json.id 1
 	json.profile_status @profile_status
+	json.profile_progress 100
 	json.set! 'profile' do
 		json.name "広末涼子"
 		json.age 23

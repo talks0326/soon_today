@@ -18,6 +18,5 @@ class TicketsController < ApplicationController
 
   def like
   	@id = params[:id].to_i
-  	@mattch = @id % 2
   end
 end

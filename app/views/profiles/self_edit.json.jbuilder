@@ -1,6 +1,7 @@
 json.set! 'user' do
 	json.id @user.id
 	json.profile_status @user.profile.status
+	json.profile_progress 100
 	json.set! 'profile' do
 		json.partial! 'profile_partial',profile: @user.profile
 	end
