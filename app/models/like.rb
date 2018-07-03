@@ -11,5 +11,5 @@
 
 class Like < ActiveRecord::Base
 	belongs_to :user
-	belongs_to :target,class_name: "User"
+	belongs_to :ticket
 end

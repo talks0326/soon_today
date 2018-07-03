@@ -26,7 +26,8 @@ end
 
 create_table "likes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
   t.integer "user_id", null: false
-  t.integer "target_id", null: false
+  t.integer "ticket_id", null: false
+  t.boolean "like_flag", default: false
   t.datetime "created_at", null: false
   t.datetime "updated_at", null: false
 end

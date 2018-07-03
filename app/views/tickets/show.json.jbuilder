@@ -1,5 +1,6 @@
 json.set! 'tickets' do
 	json.id @id
+	json.like false
 	json.set! 'time_style' do
 		json.partial! 'time_style_test'
 	end

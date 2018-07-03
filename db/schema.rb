@@ -92,9 +92,6 @@ ActiveRecord::Schema.define(version: 0) do
     t.integer "birth_place_id"
     t.integer "work_id"
     t.integer "place_id"
-    t.string "active_location_id"
-    t.integer "time_style_id"
-    t.integer "food_style_id"
     t.integer "status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -110,6 +107,9 @@ ActiveRecord::Schema.define(version: 0) do
   create_table "tickets", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "user_id", null: false
     t.boolean "end"
+    t.string "active_location_id"
+    t.integer "time_style_id"
+    t.integer "food_style_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
